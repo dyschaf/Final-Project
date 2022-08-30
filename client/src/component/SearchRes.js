@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Specs from "react";
 const SearchRes = (props) => {
-  const [searchres, setsearchres] = useState({});
-  const [search, setsearch] = useState();
+  const [searchres, setsearchres] = useState([]);
+  const [search, setsearch] = useState([]);
   console.log("search state" + search);
   const handleClick = async () => {
     // if (props.phones.detail.length > 0) {
@@ -17,11 +17,15 @@ const SearchRes = (props) => {
 
   return (
     <>
-      <div onClick={handleClick()}>
-        (<h3>{search[1].phones.phone_name}</h3>), (
-        {/* <img src={img} alt="phone img" /> */}
+      {console.log()}
+      {props.map((search, i) => {
+        return (
+          <div onClick={handleClick()}>
+            <h3>{props.phone_name}</h3>,
+            <img src={props.image} alt="phone img" />
+          </div>
         );
-      </div>
+      })}
     </>
   );
 };
