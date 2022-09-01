@@ -4,7 +4,7 @@ import Stack from "@mui/material/Stack";
 import React, { Component } from "react";
 const Nav = () => {
   return (
-    <div>
+    <div className="nav">
       <Stack spacing={2} direction="row">
         <Button component={Link} to="/">
           Home
