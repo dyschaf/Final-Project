@@ -1,30 +1,33 @@
+import React, { Component, useState, createContext } from "react";
 import logo from "./logo.svg";
 import Nav from "./component/Nav";
-import Table1 from "./component/Table1";
-import Table2 from "./component/Table2";
+import Home from "./component/Home";
+import Login from "./component/Login";
 
-import React, { Component, useState, useEffect } from "react";
-// const express = require("express");
-// const router = express.Router();
-// const cors = require("cors");
-// router.use(cors());
-import ErrorBoundary from "./component/ErrorBoundary";
+import { Routes, Route, useNavigate } from "react-router-dom";
+// import { Auth } from "../auth/Auth";
 import "./App.css";
+import ErrorBoundary from "./component/ErrorBoundary";
+
+export const AppContext = createContext(null);
 
 function App() {
+  const [accessToken, setAccessToken] = useState("");
   return (
-    <>
-      {/* <ErrorBoundary> */}
-      <Nav />
-      {/* </ErrorBoundary> */}
-      <div>
-        hi
+    <AppContext.Provider value={{ accessToken, setAccessToken }}>
+      <div className="App">
         <ErrorBoundary>
-          <Table1 />
-          <Table2 />
+          <Nav />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Login" element={<Login title="login" />} />
+            <Route path="/SignUp" element={<Login title="signUp" />} />
+          </Routes>
         </ErrorBoundary>
       </div>
-    </>
+    </AppContext.Provider>
   );
 }
 
