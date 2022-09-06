@@ -7,7 +7,7 @@ const router = express.Router();
 // router.get("/users", VerifyToken, getUsers);
 router.post("/Login", Login);
 router.post("/SignUp", SignUp);
-router.get("/Logout", Logout);
+router.post("/Logout", Logout);
 router.get("/token", VerifyToken, (req, res) => {
   res.sendStatus(200);
 });

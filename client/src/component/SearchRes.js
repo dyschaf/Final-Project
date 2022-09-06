@@ -20,8 +20,8 @@ const SearchRes = (props) => {
       {console.log()}
       {props.map((search, i) => {
         return (
-          <div onClick={handleClick()}>
-            <h3>{props.phone_name}</h3>,
+          <div key={i + 20} onClick={handleClick()}>
+            <h3>{props.phone_name}</h3>
             <img src={props.image} alt="phone img" />
           </div>
         );

@@ -1,20 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import React, { Component } from "react";
+import React, { useContext, Component } from "react";
+import { AppContext } from "../App";
 
 const Nav = () => {
+  const { setAccessToken } = useContext(AppContext);
+
+  const navigate = useNavigate();
   const logout = () =>
     fetch("/Logout", {
-      method: "delete", // or 'PUT'
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(logout),
-    })
-      .then((req) => req.json)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    }).then((res) => {
+      if (res.status === 200) {
+        setAccessToken(null);
+        navigate("/login");
+      }
+    });
 
   return (
     <div className="nav">

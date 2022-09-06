@@ -27,7 +27,7 @@ const Login = (props) => {
         navigate("/");
       }
     } catch (e) {
-      navigate("/SignUp");
+      navigate("/Login");
     }
   }, []);
 
