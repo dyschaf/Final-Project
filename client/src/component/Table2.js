@@ -54,7 +54,12 @@ const Table2 = () => {
     >
       {console.log(searchres)}
       <form onSubmit={handleSubmit}>
-        <input className="searchtext" type={"text"} name={"phone1"} />
+        <input
+          className="searchtext"
+          placeholder="Search for a phone"
+          type={"text"}
+          name={"phone1"}
+        />
         <button className="searchbtn">Search</button>
       </form>
       <div>
@@ -83,22 +88,36 @@ const Table2 = () => {
             <table>
               {console.log(searchres)}
               {searchres.specifications.map((specificationss, i, j) => {
-                return (
-                  <tbody>
+                return searchres.specifications[i].specs.map((specss, k) => {
+                  console.log(specss);
+                  return (
                     <tr>
-                      <th>{specificationss.title}</th>
-                      {searchres.specifications[i].specs.map((specss, k) => {
-                        console.log(specss);
-                        return (
+                      {
+                        (specss[k] = specss[0] ? (
+                          <>
+                            {console.log(
+                              searchres.specifications[i].specs.length
+                            )}
+                            <th
+                              rowSpan={`${searchres.specifications[i].specs.length}`}
+                              scope={"row"}
+                            >
+                              {specificationss.title}
+                            </th>
+
+                            <td className="key">{specss.key}</td>
+                            <td className="val">{specss.val}</td>
+                          </>
+                        ) : (
                           <>
                             <td className="key">{specss.key}</td>
                             <td className="val">{specss.val}</td>
                           </>
-                        );
-                      })}
+                        ))
+                      }
                     </tr>
-                  </tbody>
-                );
+                  );
+                });
               })}
             </table>
           </div>

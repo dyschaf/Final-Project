@@ -7,6 +7,7 @@ const Links = () => {
         <Link to="/">Home</Link>
         <Link to="/SignUp"> SignUp </Link>
         <Link to="/Login"> Login </Link>
+        <Link to="/Logout"> Login </Link>
       </nav>
     </>
   );

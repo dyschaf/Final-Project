@@ -4,17 +4,32 @@ import axios from "axios";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
+import jwt_decode from "jwt-decode";
 import { AppContext } from "../App";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
-
   const { setAccessToken } = useContext(AppContext);
+  const [token, setToken] = useState({});
+  const { accessToken } = useContext(AppContext);
 
   let navigate = useNavigate();
+  useEffect(() => {
+    try {
+      const decode = jwt_decode(accessToken);
+      console.log(decode);
+      setToken(decode);
+      const expire = decode.exp;
+      if (!expire * 1000000 < new Date().getTime()) {
+        alert("Your Logged in");
+        navigate("/");
+      }
+    } catch (e) {
+      navigate("/SignUp");
+    }
+  }, []);
 
   const handleAction = async () => {
     if (props.title === "signUp") {

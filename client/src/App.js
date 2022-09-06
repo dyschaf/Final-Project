@@ -24,6 +24,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Login" element={<Login title="login" />} />
             <Route path="/SignUp" element={<Login title="signUp" />} />
+            {/* <Route
+              path="/Logout"
+              // element={<Login title="Login" />}
+            /> */}
           </Routes>
         </ErrorBoundary>
       </div>

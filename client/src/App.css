@@ -68,8 +68,8 @@ th{
   /* padding: 20px; */
 }
 td{
-  border: solid 1px;
-  display: flex;
+  /* border: solid 1px; */
+  /* display: flex; */
   text-align: justify;
 }
 .nav{
@@ -108,7 +108,7 @@ th{
 tr{
   background-color: #a0b9e9;
 
-  vertical-align: top;
+  /* vertical-align: top; */
 }
 .searchres{
 
@@ -134,3 +134,7 @@ tr{
 .searchtext{
 
 }
+img{
+  border-radius: 10%;
+}
+table{}

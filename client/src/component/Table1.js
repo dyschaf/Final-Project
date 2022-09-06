@@ -50,7 +50,7 @@ const Table1 = () => {
     <div className="table1">
       {console.log(searchres)}
       <form onSubmit={handleSubmit}>
-        <input type={"text"} name={"phone1"} />
+        <input type={"text"} placeholder="Search for a phone" name={"phone1"} />
         <button className="btn">Search</button>
       </form>
       <div>
@@ -79,22 +79,33 @@ const Table1 = () => {
             <table>
               {console.log(searchres)}
               {searchres.specifications.map((specificationss, i, j) => {
-                return (
-                  <tbody>
+                return searchres.specifications[i].specs.map((specss, k) => {
+                  console.log(specss);
+                  return (
                     <tr>
-                      <th>{specificationss.title}</th>
-                      {searchres.specifications[i].specs.map((specss, k) => {
-                        console.log(specss);
-                        return (
+                      {
+                        (specss[k] = specss[0] ? (
+                          <>
+                            <th
+                              rowSpan={`${searchres.specifications[i].specs.length}`}
+                              scope={"row"}
+                            >
+                              {specificationss.title}
+                            </th>
+
+                            <td className="key">{specss.key}</td>
+                            <td className="val">{specss.val}</td>
+                          </>
+                        ) : (
                           <>
                             <td className="key">{specss.key}</td>
                             <td className="val">{specss.val}</td>
                           </>
-                        );
-                      })}
+                        ))
+                      }
                     </tr>
-                  </tbody>
-                );
+                  );
+                });
               })}
             </table>
           </div>

@@ -48,12 +48,12 @@ export const Login = async (req, res) => {
       { userId, email },
       process.env.ACCESS_TOKEN_SECRET,
       {
-        expiresIn: "3600s",
+        expiresIn: "216000s",
       }
     );
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      maxAge: 60 * 60 * 1000,
+      maxAge: 60 * 60 * 60 * 1000,
     });
 
     res.json(accessToken);
@@ -66,5 +66,7 @@ export const Logout = (req, res) => {
   const accessToken = req.cookie.accessToken;
   if (!accessToken) return res.sendStatus(204);
   res.clearCookie("accessToken");
+  res.redirect("/Login");
   return res.sendStatus(200);
+  // }
 };
