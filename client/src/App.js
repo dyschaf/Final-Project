@@ -1,6 +1,6 @@
 import React from "react";
-import { Component, useState, createContext } from "react";
-import logo from "./logo.svg";
+import { useState, createContext } from "react";
+// import logo from "./logo.svg";
 import Nav from "./component/Nav";
 import Home from "./component/Home";
 import Login from "./component/Login";
