@@ -1,4 +1,5 @@
-import React, { Component, useState, createContext } from "react";
+import React from "react";
+import { Component, useState, createContext } from "react";
 import logo from "./logo.svg";
 import Nav from "./component/Nav";
 import Home from "./component/Home";
