@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 // import cors from "cors";
 import db from "./config/Database.js";
 import dotenv from "dotenv";
+import path from "path"
 import router from "./routes/Users.js";
 
 dotenv.config();
