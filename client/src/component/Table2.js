@@ -25,7 +25,7 @@ const Table2 = () => {
       body: JSON.stringify({ category: "string" }),
     };
     fetch(
-      `http://api-mobilespecs.azharimm.site/v2/search?query= ${e.target.phone1.value}`
+      `https://gsmarena-api.herokuapp.com/search/ ${e.target.phone1.value}`
       //   { method: "get", mode: "no-cors" }
       //   options
     )

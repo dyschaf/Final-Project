@@ -2,11 +2,12 @@
 import React, { useState, useEffect } from "react";
 import SearchRes from "./SearchRes";
 
+// import cors from "cors";
 var cors = require("cors");
-
+// const axios = require("axios");((
 cors();
-
-const Table1 = () => {
+// router.use(cors());
+const Table2 = () => {
   const [searchres, setsearchres] = useState([]);
   const [search, setsearch] = useState([]);
   const handleSubmit = (e) => {
@@ -24,7 +25,7 @@ const Table1 = () => {
       body: JSON.stringify({ category: "string" }),
     };
     fetch(
-      `http://api-mobilespecs.azharimm.site/v2/search?query= ${e.target.phone1.value}`
+      `https://gsmarena-api.herokuapp.com/search/ ${e.target.phone1.value}`
       //   { method: "get", mode: "no-cors" }
       //   options
     )
@@ -47,11 +48,19 @@ const Table1 = () => {
   };
 
   return (
-    <div className="table1">
+    <div
+      className="table2"
+      // className="tables-container"
+    >
       {console.log(searchres)}
       <form onSubmit={handleSubmit}>
-        <input type={"text"} placeholder="Search for a phone" name={"phone1"} />
-        <button className="btn">Search</button>
+        <input
+          className="searchtext"
+          placeholder="Search for a phone"
+          type={"text"}
+          name={"phone1"}
+        />
+        <button className="searchbtn">Search</button>
       </form>
       <div>
         {search.map((phone, i) => {
@@ -86,6 +95,9 @@ const Table1 = () => {
                       {
                         (specss[k] = specss[0] ? (
                           <>
+                            {console.log(
+                              searchres.specifications[i].specs.length
+                            )}
                             <th
                               rowSpan={`${searchres.specifications[i].specs.length}`}
                               scope={"row"}
@@ -115,4 +127,4 @@ const Table1 = () => {
   );
 };
 
-export default Table1;
+export default Table2;
