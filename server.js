@@ -11,7 +11,11 @@ const app = express();
 const __dirname = path.resolve();
 // app.use(cors());
 app.use(
-  cors({ credentials: true, origin: "https://gsmarena-api.herokuapp.com/" })
+  cors({
+    origin: "*",
+    credentials: true,
+    optionSuccessStatus: 200,
+  })
 );
 app.use(cookieParser());
 app.use(express.json());

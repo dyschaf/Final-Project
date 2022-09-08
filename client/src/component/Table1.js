@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 // import SearchRes from "./SearchRes";
 import cors from "cors";
 // const axios = require("axios");((
-cors();
+
+cors({ credentials: true, origin: "https://comparecell.herokuapp.com/" });
+//
 // router.use(cors());
 const Table2 = () => {
   const [searchres, setsearchres] = useState([]);
