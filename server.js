@@ -10,9 +10,7 @@ dotenv.config();
 const app = express();
 const __dirname = path.resolve();
 // app.use(cors());
-app.use(
-  cors({ credentials: true, origin: "https://comparecell.herokuapp.com" })
-);
+app.use(cors({ credentials: true, origin: "https://herokuapp.com" }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
