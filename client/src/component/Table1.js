@@ -1,9 +1,7 @@
 // import React from "react";
 import React, { useState, useEffect } from "react";
-import SearchRes from "./SearchRes";
-
-// import cors from "cors";
-var cors = require("cors");
+// import SearchRes from "./SearchRes";
+import cors from "cors";
 // const axios = require("axios");((
 cors();
 // router.use(cors());
@@ -17,7 +15,7 @@ const Table2 = () => {
     //   console.log(e.target);
     const options = {
       method: "get",
-      mode: "cors",
+      // mode: "cors",
       headers: {
         "Content-Type": "application/json",
         "X-BLOBR-KEY": "17BFH0yvMcNu9ONOkkDy9MvnHdLklICX",
@@ -25,7 +23,14 @@ const Table2 = () => {
       body: JSON.stringify({ category: "string" }),
     };
     fetch(
-      `https://gsmarena-api.herokuapp.com/search/ ${e.target.phone1.value}`
+      `https://gsmarena-api.herokuapp.com/search/${e.target.phone1.value}`,
+      {
+        // mode: "no-cors",
+        // headers: {
+        //   "Content-Type": "application/json",
+        //   // "X-BLOBR-KEY": "17BFH0yvMcNu9ONOkkDy9MvnHdLklICX",
+        // },
+      }
       //   { method: "get", mode: "no-cors" }
       //   options
     )

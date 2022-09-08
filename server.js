@@ -1,6 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-// import cors from "cors";
+import cors from "cors";
 import db from "./config/Database.js";
 import dotenv from "dotenv";
 import path from "path";
@@ -9,7 +9,10 @@ import router from "./routes/Users.js";
 dotenv.config();
 const app = express();
 const __dirname = path.resolve();
-// app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+// app.use(cors());
+app.use(
+  cors({ credentials: true, origin: "https://comparecell.herokuapp.com" })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
