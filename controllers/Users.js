@@ -1,7 +1,23 @@
 import Users from "../models/UsersModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
+import axios from "axios";
+export const Phone = async (req, res) => {
+  const { detail } = req.params;
+  // console.log(req.params);
+  const { data } = await axios.get(
+    `https://gsmarena-api.herokuapp.com/device/${detail}`,
+    console.log(detail)
+  );
+  res.json(data);
+};
+export const Search = async (req, res) => {
+  const { search } = req.params;
+  const { data } = await axios.get(
+    `https://gsmarena-api.herokuapp.com/search/${search}`
+  );
+  res.json(data);
+};
 export const getUsers = async (req, res) => {
   try {
     const users = await Users.findAll({

@@ -1,6 +1,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import cors from "cors";
+// import cors from "cors";
+import axios from "axios";
 import db from "./config/Database.js";
 import dotenv from "dotenv";
 import path from "path";
@@ -10,13 +11,12 @@ dotenv.config();
 const app = express();
 const __dirname = path.resolve();
 // app.use(cors());
-app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-    optionSuccessStatus: 200,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "*",
+//     credentials: true,
+//   })
+// );
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
