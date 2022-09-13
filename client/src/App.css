@@ -85,10 +85,13 @@ td{
 }
 .table1{
   flex: 1;
-  margin-right: 100px;
+  padding: 5px;
+  width:90vw,
+  
 }
 .table2{
   flex: 1;
+  width:90vw,
 }
 th{
   background-color: #456ab2;

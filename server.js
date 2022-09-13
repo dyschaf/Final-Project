@@ -1,7 +1,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 // import cors from "cors";
-import axios from "axios";
+// import axios from "axios";
 import db from "./config/Database.js";
 import dotenv from "dotenv";
 import path from "path";

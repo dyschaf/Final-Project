@@ -2,45 +2,42 @@ import React, { useState, useEffect } from "react";
 import cors from "cors";
 
 const Table1 = () => {
-  const [searchres, setsearchres] = useState([]);
-  const [search, setsearch] = useState([]);
+  const [searchres1, setsearchres1] = useState([]);
+  const [search1, setsearch1] = useState([]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = document.getElementById("form");
-    const display = document.getElementById("display");
-    const { search } = form;
+    const form1 = document.getElementById("form1");
+    const display1 = document.getElementById("display1");
+    const { search } = form1;
     if (search.value === "") {
-      display.innerText = "Must fill in search input before search!";
+      display1.innerText = "Must fill in search input before search!";
       return;
     }
     fetch(`/search/${search.value}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setsearch(data);
+        setsearch1(data);
       })
       .catch((err) => {
         console.log(err);
-        display.innerText = err.message;
+        display1.innerText = err.message;
       });
   };
   const handleClick = (e) => {
     // e.preventDefault();
     const detail = e.target.parentElement.children.detail.value;
-    setsearch([]);
+    setsearch1([]);
     fetch(`/device/${detail}`)
       .then((res) => res.json())
       .then((data) => {
-        setsearchres(data);
-        console.log(data);
+        setsearchres1(data);
       })
       .catch((err) => console.log(err));
   };
 
   return (
     <div className="table1">
-      {console.log(searchres)}
-      <form id="form" onSubmit={handleSubmit}>
+      <form id="form1" onSubmit={handleSubmit}>
         <input
           className="searchtext"
           placeholder="Search for a phone"
@@ -48,10 +45,10 @@ const Table1 = () => {
           name={"search"}
         />
         <button className="searchbtn">Search</button>
-        <pre id="display"></pre>
+        <pre id="display1"></pre>
       </form>
       <div>
-        {search.map((phone, i) => {
+        {search1.map((phone, i) => {
           {
             if (i > 10) return;
           }
@@ -70,22 +67,22 @@ const Table1 = () => {
         })}
       </div>
       <div>
-        {searchres < 1 ? (
+        {searchres1 < 1 ? (
           <div></div>
         ) : (
           <div>
-            <h3>{searchres.title}</h3>
-            <img src={searchres.img} alt="phone img" />
+            <h3>{searchres1.title}</h3>
+            <img src={searchres1.img} alt="phone img" />
             <table>
-              {searchres.spec_detail.map((specificationss, i, j) => {
-                return searchres.spec_detail[i].specs.map((specss, k) => {
+              {searchres1.spec_detail.map((specificationss, i, j) => {
+                return searchres1.spec_detail[i].specs.map((specss, k) => {
                   return (
                     <tr>
                       {
                         (specss[k] = specss[0] ? (
                           <>
                             <th
-                              rowSpan={`${searchres.spec_detail[i].specs.length}`}
+                              rowSpan={`${searchres1.spec_detail[i].specs.length}`}
                               scope={"row"}
                             >
                               {specificationss.category}
