@@ -20,7 +20,7 @@ const Table2 = () => {
         setsearch2(data);
       })
       .catch((err) => {
-        display.innerText = err.message;
+        display2.innerText = err.message;
       });
   };
   const handleClick2 = (e) => {
