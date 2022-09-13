@@ -4,7 +4,7 @@ import cors from "cors";
 const Table1 = () => {
   const [searchres1, setsearchres1] = useState([]);
   const [search1, setsearch1] = useState([]);
-  const handleSubmit = (e) => {
+  const handleSubmit1 = (e) => {
     e.preventDefault();
     const form1 = document.getElementById("form1");
     const display1 = document.getElementById("display1");
@@ -23,7 +23,7 @@ const Table1 = () => {
         display1.innerText = err.message;
       });
   };
-  const handleClick = (e) => {
+  const handleClick1 = (e) => {
     // e.preventDefault();
     const detail = e.target.parentElement.children.detail.value;
     setsearch1([]);
@@ -37,7 +37,7 @@ const Table1 = () => {
 
   return (
     <div className="table1">
-      <form id="form1" onSubmit={handleSubmit}>
+      <form id="form1" onSubmit={handleSubmit1}>
         <input
           className="searchtext"
           placeholder="Search for a phone"
@@ -53,7 +53,7 @@ const Table1 = () => {
             if (i > 10) return;
           }
           return (
-            <div className="searchres" key={i} onClick={handleClick}>
+            <div className="searchres" key={i} onClick={handleClick1}>
               <h3>{phone.name}</h3>
               <img src={phone.img} alt="phone img" />
               <input
